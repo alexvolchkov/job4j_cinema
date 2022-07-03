@@ -43,13 +43,12 @@ public class UserController {
 
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute User user, HttpSession session) {
-        if (userService.save(user)) {
-            return "redirect:/users";
-        } else {
+        boolean result = userService.save(user);
+        if (!result) {
             session.setAttribute("message", "Пользователь с такой почтой или телефоном уже существует");
             session.setAttribute("user", user);
-            return "redirect:/usersFail";
         }
+        return result ? "redirect:/users" : "redirect:/usersFail";
     }
 
     @GetMapping("/usersFail")

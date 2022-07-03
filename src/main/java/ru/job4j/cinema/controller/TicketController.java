@@ -75,11 +75,7 @@ public class TicketController {
         User user = getUser(session);
         Session currentSession = sessionService.findById(id).get();
         Optional<Ticket> ticket = ticketService.add(new Ticket(0, currentSession, row, cell, user));
-        if (ticket.isPresent()) {
-            return "redirect:/formTicket/" + ticket.get().getId();
-        } else {
-            return "redirect:/index";
-        }
+        return ticket.isPresent() ? "redirect:/formTicket/" + ticket.get().getId() : "redirect:/index";
     }
 
     @GetMapping("/formTicket/{ticketId}")
