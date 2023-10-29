@@ -1,6 +1,8 @@
 package ru.job4j.cinema.store;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import ru.job4j.cinema.model.Session;
 import ru.job4j.cinema.model.Ticket;
@@ -16,6 +18,8 @@ import java.util.Optional;
 
 @Repository
 public class TicketDbStore implements TicketStore {
+
+    private static final Logger LOG = LogManager.getLogger(TicketDbStore.class.getName());
     private final BasicDataSource pool;
     private final UserStore userStore;
     private final SessionStore sessionStore;
@@ -46,7 +50,7 @@ public class TicketDbStore implements TicketStore {
                 rsl = Optional.of(ticket);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -65,7 +69,7 @@ public class TicketDbStore implements TicketStore {
             ps.setInt(5, ticket.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -80,7 +84,7 @@ public class TicketDbStore implements TicketStore {
             ps.setInt(1, ticket.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -98,7 +102,7 @@ public class TicketDbStore implements TicketStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -117,7 +121,7 @@ public class TicketDbStore implements TicketStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -130,7 +134,7 @@ public class TicketDbStore implements TicketStore {
         )) {
             ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
     }
 

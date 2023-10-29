@@ -1,6 +1,8 @@
 package ru.job4j.cinema.store;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import ru.job4j.cinema.model.User;
 
@@ -14,6 +16,8 @@ import java.util.Optional;
 
 @Repository
 public class UserDbStore implements UserStore {
+
+    private static final Logger LOG = LogManager.getLogger(UserDbStore.class.getName());
     private final BasicDataSource pool;
 
     public UserDbStore(BasicDataSource pool) {
@@ -39,7 +43,7 @@ public class UserDbStore implements UserStore {
                 rsl = Optional.of(user);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -57,7 +61,7 @@ public class UserDbStore implements UserStore {
             ps.setInt(4, user.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -72,7 +76,7 @@ public class UserDbStore implements UserStore {
             ps.setInt(1, user.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -90,7 +94,7 @@ public class UserDbStore implements UserStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -109,7 +113,7 @@ public class UserDbStore implements UserStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -122,7 +126,7 @@ public class UserDbStore implements UserStore {
         )) {
             ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
     }
 
@@ -141,7 +145,7 @@ public class UserDbStore implements UserStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }

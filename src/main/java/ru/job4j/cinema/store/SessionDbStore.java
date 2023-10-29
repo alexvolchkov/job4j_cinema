@@ -1,6 +1,8 @@
 package ru.job4j.cinema.store;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import ru.job4j.cinema.model.Session;
 
@@ -12,6 +14,8 @@ import java.util.*;
 
 @Repository
 public class SessionDbStore implements SessionStore {
+
+    private static final Logger LOG = LogManager.getLogger(SessionDbStore.class.getName());
     private final BasicDataSource pool;
 
     public SessionDbStore(BasicDataSource pool) {
@@ -37,7 +41,7 @@ public class SessionDbStore implements SessionStore {
                 rsl = Optional.of(session);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -55,7 +59,7 @@ public class SessionDbStore implements SessionStore {
             ps.setInt(4, session.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -70,7 +74,7 @@ public class SessionDbStore implements SessionStore {
             ps.setInt(1, session.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -88,7 +92,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -107,7 +111,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -120,7 +124,7 @@ public class SessionDbStore implements SessionStore {
         )) {
             ps.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
     }
 
@@ -138,7 +142,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
@@ -158,7 +162,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
         return rsl;
     }
