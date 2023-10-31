@@ -41,7 +41,7 @@ public class SessionDbStore implements SessionStore {
                 rsl = Optional.of(session);
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -59,7 +59,7 @@ public class SessionDbStore implements SessionStore {
             ps.setInt(4, session.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -74,7 +74,7 @@ public class SessionDbStore implements SessionStore {
             ps.setInt(1, session.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -92,7 +92,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -111,7 +111,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -124,7 +124,7 @@ public class SessionDbStore implements SessionStore {
         )) {
             ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
     }
 
@@ -142,7 +142,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -162,7 +162,7 @@ public class SessionDbStore implements SessionStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }

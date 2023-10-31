@@ -50,7 +50,7 @@ public class TicketDbStore implements TicketStore {
                 rsl = Optional.of(ticket);
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -69,7 +69,7 @@ public class TicketDbStore implements TicketStore {
             ps.setInt(5, ticket.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -84,7 +84,7 @@ public class TicketDbStore implements TicketStore {
             ps.setInt(1, ticket.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -102,7 +102,7 @@ public class TicketDbStore implements TicketStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -121,7 +121,7 @@ public class TicketDbStore implements TicketStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -134,7 +134,7 @@ public class TicketDbStore implements TicketStore {
         )) {
             ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
     }
 

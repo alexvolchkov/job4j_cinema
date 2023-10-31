@@ -43,7 +43,7 @@ public class UserDbStore implements UserStore {
                 rsl = Optional.of(user);
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -61,7 +61,7 @@ public class UserDbStore implements UserStore {
             ps.setInt(4, user.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -76,7 +76,7 @@ public class UserDbStore implements UserStore {
             ps.setInt(1, user.getId());
             rsl = ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -94,7 +94,7 @@ public class UserDbStore implements UserStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -113,7 +113,7 @@ public class UserDbStore implements UserStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
@@ -126,7 +126,7 @@ public class UserDbStore implements UserStore {
         )) {
             ps.execute();
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
     }
 
@@ -145,7 +145,7 @@ public class UserDbStore implements UserStore {
                 }
             }
         } catch (SQLException e) {
-            LOG.error(e);
+            LOG.error(e.getMessage(), e);
         }
         return rsl;
     }
